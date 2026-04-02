@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlas & Spark — Radiating Global Sovereignty</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & ROOT ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --obsidian: #0A0A0A;
+  --violet:   #6300FF;
+  --silver:   #C0C0C0;
+  --ivory:    #F9F9F9;
+  --amethyst: #9F7AEA;
+  --charcoal: #4A4A4A;
+  --deep:     #0d0017;
+  --font-d:   'Bebas Neue', sans-serif;
+  --font-s:   'Cormorant Garamond', serif;
+  --font-b:   'DM Sans', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--obsidian);
+  color: var(--ivory);
+  font-family: var(--font-b);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ─── NOISE GRAIN OVERLAY ──────────────────────────── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999; opacity: .45;
+}
+
+/* ─── NAVIGATION ───────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid #1a1a1a;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 60px; height: 68px;
+}
+.nav-brand {
+  font-family: var(--font-d);
+  font-size: 20px; letter-spacing: .18em;
+  color: var(--ivory); text-decoration: none;
+}
+.nav-brand span { color: var(--violet); }
+.nav-links {
+  display: flex; gap: 0; list-style: none;
+}
+.nav-links a {
+  color: var(--silver); text-decoration: none;
+  font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+  padding: 8px 18px; transition: color .2s;
+}
+.nav-links a:hover { color: var(--violet); }
+.nav-cta {
+  background: var(--violet); color: #fff;
+  border: none; cursor: pointer;
+  font-family: var(--font-b);
+  font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
+  padding: 11px 28px; text-decoration: none;
+  transition: opacity .2s; display: inline-block;
+}
+.nav-cta:hover { opacity: .82; }
+
+/* ─── SHARED LAYOUT ────────────────────────────────── */
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 60px; }
+.section { padding: 100px 60px; max-width: 1280px; margin: 0 auto; }
+.section-label {
+  font-family: var(--font-b);
+  font-size: 9px; letter-spacing: .5em; text-transform: uppercase;
+  color: var(--violet); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 14px;
+}
+.section-label::before {
+  content: ''; display: inline-block;
+  width: 28px; height: 1px; background: var(--violet);
+}
+.section-title {
+  font-family: var(--font-d);
+  font-size: clamp(42px, 6vw, 72px);
+  letter-spacing: .06em; line-height: .95;
+  color: var(--ivory); margin-bottom: 56px;
+}
+hr.rule { border: none; border-top: 1px solid #1a1a1a; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
+.btn-primary {
+  display: inline-block;
+  background: var(--violet); color: #fff;
+  border: none; cursor: pointer;
+  font-family: var(--font-b);
+  font-size: 10px; letter-spacing: .28em; text-transform: uppercase;
+  padding: 15px 40px; text-decoration: none;
+  transition: opacity .2s;
+}
+.btn-primary:hover { opacity: .82; }
+.btn-ghost {
+  display: inline-block;
+  background: none; color: var(--ivory);
+  border: 1px solid var(--charcoal); cursor: pointer;
+  font-family: var(--font-b);
+  font-size: 10px; letter-spacing: .28em; text-transform: uppercase;
+  padding: 15px 40px; text-decoration: none;
+  transition: border-color .2s, color .2s;
+}
+.btn-ghost:hover { border-color: var(--violet); color: var(--silver); }
+.tag {
+  display: inline-block;
+  font-size: 8px; letter-spacing: .4em; text-transform: uppercase;
+  color: var(--amethyst);
+  border: 1px solid rgba(159,122,234,.3);
+  padding: 4px 14px; margin-top: 18px;
+}
+.violet-line {
+  width: 1px; height: 64px;
+  background: linear-gradient(to bottom, transparent, var(--violet));
+  margin: 0 auto 28px;
+}
+.gem {
+  width: 8px; height: 8px;
+  background: var(--violet); transform: rotate(45deg);
+}
+
+/* ─────────────────────────────────────────────────────
+   SECTION 1 — HERO
+───────────────────────────────────────────────────── */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center; padding: 140px 40px 100px;
+  overflow: hidden;
+}
+.hero-glow {
+  position: absolute;
+  width: 900px; height: 900px;
+  background: radial-gradient(circle, rgba(99,0,255,.16) 0%, transparent 68%);
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  animation: heroGlow 7s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes heroGlow {
+  0%,100% { transform:translate(-50%,-50%) scale(1); opacity:.5; }
+  50%      { transform:translate(-50%,-50%) scale(1.22); opacity:1; }
+}
+.hero-scanline {
+  position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,.03) 3px,
+    rgba(0,0,0,.03) 4px
+  );
+}
+.hero-eyebrow {
+  font-size: 9px; letter-spacing: .45em; text-transform: uppercase;
+  color: var(--silver); margin-bottom: 28px;
+  animation: fadeUp .9s ease .1s both;
+}
+.hero-title {
+  font-family: var(--font-d);
+  font-size: clamp(80px, 14vw, 180px);
+  letter-spacing: .04em; line-height: .9;
+  background: linear-gradient(140deg, var(--ivory) 35%, var(--amethyst) 68%, var(--violet));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 28px;
+  animation: fadeUp .9s ease .3s both;
+}
+.hero-amp {
+  font-family: var(--font-s);
+  font-size: clamp(40px,6vw,90px);
+  font-style: italic; font-weight: 300;
+  color: var(--silver);
+  display: block; line-height: 1;
+}
+.hero-sub {
+  font-family: var(--font-s);
+  font-size: clamp(16px,2vw,22px);
+  font-style: italic; font-weight: 300;
+  color: var(--silver); letter-spacing: .14em;
+  margin-bottom: 44px;
+  animation: fadeUp .9s ease .5s both;
+}
+.hero-divider {
+  display: flex; align-items: center; gap: 18px;
+  width: 300px; margin: 0 auto 44px;
+  animation: fadeUp .9s ease .7s both;
+}
+.hero-divider span { flex: 1; height: 1px; background: var(--charcoal); }
+.hero-btns {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp .9s ease .9s both;
+}
+.scroll-cue {
+  position: absolute; bottom: 48px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  font-size: 8px; letter-spacing: .45em; color: var(--charcoal);
+  text-transform: uppercase;
+  animation: fadeIn 2s ease 1.5s both;
+}
+.scroll-cue-line {
+  width: 1px; height: 36px;
+  background: linear-gradient(to bottom, var(--charcoal), transparent);
+}
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(28px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity:0; } to { opacity:1; }
+}
+
+/* ─────────────────────────────────────────────────────
+   SECTION 2 — MANIFESTO STRIP
+───────────────────────────────────────────────────── */
+.manifesto-strip {
+  padding: 80px 60px;
+  background: linear-gradient(135deg, #0a0014 0%, var(--obsidian) 100%);
+  position: relative; overflow: hidden; text-align: center;
+}
+.manifesto-bg-word {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-d);
+  font-size: clamp(100px,18vw,260px);
+  color: rgba(99,0,255,.04);
+  pointer-events: none; white-space: nowrap; user-select: none;
+}
+.manifesto-quote {
+  position: relative; z-index: 1;
+  font-family: var(--font-s);
+  font-size: clamp(18px,2.4vw,30px);
+  font-style: italic; font-weight: 300;
+  line-height: 1.75; color: var(--ivory);
+  max-width: 860px; margin: 0 auto 36px;
+}
+.manifesto-quote em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--violet), var(--amethyst));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─────────────────────────────────────────────────────
+   SECTION 3 — THREE PILLARS
+───────────────────────────────────────────────────── */
+.pillar-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+.pillar {
+  padding: 52px 40px; position: relative;
+  overflow: hidden; transition: transform .4s ease;
+}
+.pillar:hover { transform: translateY(-6px); }
+.pillar.p1 { background: #111111; border: 1px solid #222; }
+.pillar.p2 { background: linear-gradient(135deg,#110022,#1a0040); border: 1px solid #2a0055; }
+.pillar.p3 { background: linear-gradient(135deg,var(--violet),var(--amethyst)); }
+.pillar-bg-num {
+  font-family: var(--font-d);
+  font-size: 130px; line-height: 1;
+  position: absolute; top: -16px; right: 20px;
+  opacity: .05; user-select: none;
+}
+.pillar-role {
+  font-size: 8px; letter-spacing: .5em; text-transform: uppercase;
+  color: var(--amethyst); margin-bottom: 10px;
+}
+.pillar.p3 .pillar-role { color: rgba(255,255,255,.6); }
+.pillar-name {
+  font-family: var(--font-d);
+  font-size: clamp(26px,2.8vw,40px);
+  letter-spacing: .06em; line-height: 1;
+  margin-bottom: 18px;
+}
+.pillar-desc {
+  font-family: var(--font-s);
+  font-size: 15px; font-style: italic;
+  color: var(--silver); line-height: 1.65;
+}
+.pillar.p3 .pillar-desc { color: rgba(255,255,255,.82); }
+.pillar-num-label {
+  position: absolute; bottom: 24px; right: 28px;
+  font-family: var(--font-d);
+  font-size: 12px; letter-spacing: .2em;
+  color: var(--violet); opacity: .5;
+}
+.pillar.p3 .pillar-num-label { color: rgba(255,255,255,.35); }
+
+/* ─────────────────────────────────────────────────────
+   SECTION 4 — SPARK EVENTS GRID
+───────────────────────────────────────────────────── */
+.event-card {
+  padding: 48px 42px;
+  background: #0e0e0e; border: 1px solid #1a1a1a;
+  position: relative; overflow: hidden;
+  transition: border-color .3s ease;
+}
+.event-card:hover { border-color: var(--violet); }
+.event-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--violet), var(--amethyst));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .4s ease;
+}
+.event-card:hover::before { transform: scaleX(1); }
+.event-niche {
+  font-size: 8px; letter-spacing: .5em; text-transform: uppercase;
+  color: var(--violet); margin-bottom: 14px;
+}
+.event-name {
+  font-family: var(--font-d);
+  font-size: clamp(28px,2.8vw,42px);
+  letter-spacing: .06em; line-height: 1.05;
+  margin-bottom: 18px;
+}
+.event-focus {
+  font-family: var(--font-s);
+  font-size: 14px; font-style: italic;
+  color: var(--charcoal); line-height: 1.65;
+}
+
+/* ─────────────────────────────────────────────────────
+   SECTION 5 — MEMBERSHIP TIERS
+───────────────────────────────────────────────────── */
+.membership-intro {
+  padding: 100px 60px 48px;
+  text-align: center;
+}
+.tier-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+.tier-card {
+  padding: 52px 36px; position: relative;
+  overflow: hidden; transition: transform .4s ease;
+}
+.tier-card:hover { transform: translateY(-6px); }
+.tier-card.t1 { background: #111; border: 1px solid #222; }
+.tier-card.t2 {
+  background: linear-gradient(135deg,#110022,#1a0040);
+  border: 1px solid #2a0055;
+}
+.tier-card.t3 {
+  background: linear-gradient(135deg,var(--violet),#7b2eff);
+}
+.tier-popular {
+  position: absolute; top: 20px; right: 20px;
+  background: var(--violet); color: #fff;
+  font-size: 7px; letter-spacing: .3em; text-transform: uppercase;
+  padding: 4px 14px;
+}
+.tier-badge {
+  font-size: 8px; letter-spacing: .5em; text-transform: uppercase;
+  color: var(--amethyst); margin-bottom: 18px;
+}
+.tier-card.t3 .tier-badge { color: rgba(255,255,255,.6); }
+.tier-price {
+  font-family: var(--font-d);
+  font-size: 64px; letter-spacing: .03em; line-height: 1;
+  margin-bottom: 4px;
+}
+.tier-period {
+  font-size: 11px; color: var(--silver);
+  letter-spacing: .22em; margin-bottom: 28px;
+}
+.tier-card.t3 .tier-period { color: rgba(255,255,255,.55); }
+.tier-name {
+  font-family: var(--font-d);
+  font-size: clamp(22px,2.2vw,32px);
+  letter-spacing: .08em; line-height: 1;
+  margin-bottom: 24px;
+}
+.tier-features {
+  list-style: none; display: flex;
+  flex-direction: column; gap: 12px;
+  margin-bottom: 36px;
+}
+.tier-features li {
+  font-size: 13px; color: var(--silver);
+  display: flex; align-items: flex-start;
+  gap: 10px; line-height: 1.5;
+}
+.tier-features li::before { content:'—'; color:var(--violet); flex-shrink:0; }
+.tier-card.t3 .tier-features li { color: rgba(255,255,255,.85); }
+.tier-card.t3 .tier-features li::before { color: rgba(255,255,255,.4); }
+
+/* ─────────────────────────────────────────────────────
+   SECTION 6 — LAND PORTFOLIO
+───────────────────────────────────────────────────── */
+.land-hero-section {
+  padding: 100px 60px 60px;
+  background: linear-gradient(135deg,#04000a,#0a0a0a);
+  position: relative; overflow: hidden;
+}
+.land-hero-bg-word {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-d);
+  font-size: clamp(80px,14vw,200px);
+  color: rgba(99,0,255,.04);
+  pointer-events: none; user-select: none;
+}
+.land-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 48px; }
+.land-stat {
+  padding: 36px 28px; background: #0e0e0e;
+  border: 1px solid #1a1a1a; text-align: center;
+}
+.land-stat-num {
+  font-family: var(--font-d);
+  font-size: 52px; letter-spacing: .04em;
+  background: linear-gradient(135deg, var(--ivory), var(--amethyst));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.land-stat-label {
+  font-size: 9px; letter-spacing: .4em;
+  text-transform: uppercase; color: var(--charcoal); margin-top: 10px;
+}
+.deal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.deal-card {
+  padding: 48px 44px; background: #0e0e0e;
+  border: 1px solid #1a1a1a; position: relative;
+  overflow: hidden; transition: border-color .3s ease;
+}
+.deal-card:hover { border-color: var(--violet); }
+.deal-card::after {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--violet), var(--amethyst));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .45s ease;
+}
+.deal-card:hover::after { transform: scaleX(1); }
+.deal-status {
+  font-size: 8px; letter-spacing: .45em;
+  text-transform: uppercase; color: var(--violet); margin-bottom: 14px;
+}
+.deal-status.soon { color: var(--amethyst); }
+.deal-name {
+  font-family: var(--font-d);
+  font-size: clamp(26px,2.8vw,40px);
+  letter-spacing: .06em; margin-bottom: 8px;
+}
+.deal-location {
+  font-size: 11px; color: var(--silver);
+  letter-spacing: .22em; margin-bottom: 24px;
+}
+.deal-rows { display: flex; flex-direction: column; gap: 0; margin-bottom: 28px; }
+.deal-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0; border-bottom: 1px solid #1a1a1a;
+}
+.deal-row-lbl {
+  font-size: 10px; color: var(--charcoal);
+  letter-spacing: .22em; text-transform: uppercase;
+}
+.deal-row-val { font-size: 13px; color: var(--ivory); font-weight: 500; }
+.deal-row-val.accent { color: var(--amethyst); }
+
+/* ─────────────────────────────────────────────────────
+   SECTION 7 — SALES FUNNEL VISUAL
+───────────────────────────────────────────────────── */
+.funnel-section { padding: 100px 60px; }
+.funnel-stages { display: flex; flex-direction: column; max-width: 860px; }
+.funnel-stage {
+  display: flex; gap: 32px; align-items: flex-start;
+  padding: 36px 44px; background: #0e0e0e;
+  border: 1px solid #1a1a1a; margin-bottom: 2px;
+  position: relative; overflow: hidden;
+  transition: border-color .3s;
+}
+.funnel-stage:hover { border-color: var(--violet); }
+.funnel-stage::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; bottom: 0; width: 3px;
+  background: var(--violet);
+  transform: scaleY(0); transform-origin: top;
+  transition: transform .4s ease;
+}
+.funnel-stage:hover::before { transform: scaleY(1); }
+.funnel-stage-num {
+  font-family: var(--font-d);
+  font-size: 56px; line-height: 1;
+  color: rgba(99,0,255,.2); flex-shrink: 0; width: 56px;
+}
+.funnel-stage-step {
+  font-size: 8px; letter-spacing: .5em; text-transform: uppercase;
+  color: var(--violet); margin-bottom: 6px;
+}
+.funnel-stage-title {
+  font-family: var(--font-d);
+  font-size: 26px; letter-spacing: .08em; margin-bottom: 10px;
+}
+.funnel-stage-desc {
+  font-size: 13px; color: var(--charcoal); line-height: 1.72;
+}
+.funnel-stage-meta {
+  font-size: 11px; color: var(--amethyst);
+  margin-top: 10px; letter-spacing: .15em;
+}
+.funnel-connector {
+  width: 1px; height: 28px;
+  background: linear-gradient(to bottom, var(--violet), transparent);
+  margin-left: 116px;
+}
+
+/* ─────────────────────────────────────────────────────
+   SECTION 8 — WEBINAR / PODCAST
+───────────────────────────────────────────────────── */
+.media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.media-card {
+  padding: 52px 44px;
+  position: relative; overflow: hidden;
+}
+.media-card.webinar {
+  background: linear-gradient(135deg,#0a0014,#110022);
+  border: 1px solid #2a0055;
+}
+.media-card.podcast {
+  background: #0e0e0e; border: 1px solid #1a1a1a;
+}
+.media-eyebrow {
+  font-size: 8px; letter-spacing: .5em; text-transform: uppercase;
+  color: var(--violet); margin-bottom: 14px;
+}
+.media-title {
+  font-family: var(--font-d);
+  font-size: clamp(30px,3.5vw,48px);
+  letter-spacing: .06em; line-height: 1;
+  margin-bottom: 18px;
+}
+.media-desc {
+  font-family: var(--font-s);
+  font-size: 15px; font-style: italic;
+  color: var(--silver); line-height: 1.65;
+  margin-bottom: 28px;
+}
+.webinar-steps { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
+.webinar-step {
+  padding: 16px 22px; background: rgba(0,0,0,.3);
+  border-left: 2px solid var(--violet);
+  display: flex; align-items: center; gap: 18px;
+}
+.ws-icon { font-size: 15px; flex-shrink: 0; width: 22px; }
+.ws-text strong { display: block; font-size: 13px; font-weight: 500; color: var(--ivory); margin-bottom: 2px; }
+.ws-text span { font-size: 11px; color: var(--charcoal); }
+.ep-list { display: flex; flex-direction: column; gap: 2px; }
+.ep-item {
+  padding: 16px 20px; background: #111; border: 1px solid #1a1a1a;
+  display: flex; align-items: center; gap: 16px;
+  cursor: pointer; transition: border-color .25s;
+}
+.ep-item:hover { border-color: var(--violet); }
+.ep-num {
+  font-family: var(--font-d); font-size: 20px;
+  color: rgba(99,0,255,.4); width: 28px; flex-shrink: 0;
+}
+.ep-title { font-size: 13px; color: var(--ivory); flex: 1; }
+.ep-dur { font-size: 10px; color: var(--charcoal); letter-spacing: .18em; }
+.play-btn {
+  width: 36px; height: 36px;
+  border: 1px solid var(--violet);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background .2s;
+}
+.play-btn:hover { background: var(--violet); }
+.play-tri {
+  width: 0; height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 10px solid var(--ivory);
+  margin-left: 2px;
+}
+
+/* ─────────────────────────────────────────────────────
+   SECTION 9 — SIGN-UP / CONTACT
+───────────────────────────────────────────────────── */
+.signup-section {
+  padding: 100px 60px;
+  background: linear-gradient(135deg,#04000a,var(--obsidian));
+  position: relative; overflow: hidden;
+}
+.signup-bg {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-d); font-size: clamp(80px,12vw,180px);
+  color: rgba(99,0,255,.04);
+  pointer-events: none; user-select: none;
+}
+.signup-inner { position: relative; z-index: 1; max-width: 700px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.field label {
+  font-size: 9px; letter-spacing: .44em;
+  text-transform: uppercase; color: var(--silver);
+}
+.field input, .field select, .field textarea {
+  background: rgba(255,255,255,.04);
+  border: 1px solid #2a2a2a;
+  color: var(--ivory); padding: 13px 18px;
+  font-family: var(--font-b); font-size: 13px;
+  outline: none; transition: border-color .2s;
+  width: 100%;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--violet);
+}
+.field select option { background: #111; }
+.field textarea { resize: vertical; min-height: 100px; }
+.form-full { grid-column: 1 / -1; }
+.form-success {
+  display: none; text-align: center;
+  padding: 60px 40px;
+  background: rgba(99,0,255,.07);
+  border: 1px solid rgba(99,0,255,.3);
+}
+.form-success.show { display: block; }
+.form-success h3 {
+  font-family: var(--font-d); font-size: 40px;
+  letter-spacing: .1em; margin-bottom: 16px;
+}
+.form-success p { font-size: 14px; color: var(--silver); line-height: 1.7; }
+
+/* ─────────────────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid #1a1a1a;
+  padding: 60px;
+  display: flex; justify-content: space-between; align-items: flex-end;
+}
+.footer-brand {
+  font-family: var(--font-d); font-size: 26px;
+  letter-spacing: .15em;
+  background: linear-gradient(90deg, var(--ivory), var(--amethyst));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.footer-tagline {
+  font-family: var(--font-s); font-style: italic;
+  font-size: 13px; color: var(--charcoal); margin-top: 6px;
+}
+.footer-links { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+.footer-links a {
+  font-size: 9px; letter-spacing: .38em; text-transform: uppercase;
+  color: var(--charcoal); text-decoration: none;
+  transition: color .2s;
+}
+.footer-links a:hover { color: var(--violet); }
+.footer-seal {
+  font-size: 9px; letter-spacing: .36em; text-transform: uppercase;
+  color: var(--violet); margin-top: 14px; text-align: right;
+}
+
+/* ─────────────────────────────────────────────────────
+   SCROLL REVEAL
+───────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ─────────────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  nav { padding: 0 30px; }
+  .nav-links { display: none; }
+  .section { padding: 70px 30px; }
+  .wrap { padding: 0 30px; }
+}
+@media (max-width: 768px) {
+  .pillar-grid, .tier-grid, .media-grid,
+  .deal-grid, .grid-2, .grid-3, .grid-4,
+  .land-stats { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 28px; }
+  .footer-links { align-items: flex-start; }
+  .footer-seal { text-align: left; }
+  .funnel-connector { margin-left: 60px; }
+  .land-stats { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .hero-btns { flex-direction: column; align-items: center; }
+  .hero-btns .btn-primary, .hero-btns .btn-ghost { width: 100%; text-align: center; }
+  .land-stats { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════ -->
+<nav>
+  <a href="#hero" class="nav-brand">ATLAS <span>&</span> SPARK</a>
+  <ul class="nav-links">
+    <li><a href="#pillars">The Vision</a></li>
+    <li><a href="#membership">Membership</a></li>
+    <li><a href="#land">Land</a></li>
+    <li><a href="#webinar">Webinar</a></li>
+    <li><a href="#apply">Apply</a></li>
+  </ul>
+  <a href="#apply" class="nav-cta">Join the Collective</a>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section id="hero" class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-scanline"></div>
+  <p class="hero-eyebrow">Sovereign Builders Collective · Spark Series · 2025</p>
+  <h1 class="hero-title">
+    ATLAS<br>
+    <span class="hero-amp">&amp;</span><br>
+    SPARK
+  </h1>
+  <p class="hero-sub">Radiating Global Sovereignty.</p>
+  <div class="hero-divider">
+    <span></span><div class="gem"></div><span></span>
+  </div>
+  <div class="hero-btns">
+    <a href="#apply" class="btn-primary">Join the Collective</a>
+    <a href="#webinar" class="btn-ghost">Watch the Webinar</a>
+  </div>
+  <div class="scroll-cue">
+    <div class="scroll-cue-line"></div>
+    Scroll
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ══════════════════════════════════════
+     MANIFESTO
+══════════════════════════════════════ -->
+<div class="manifesto-strip reveal">
+  <div class="manifesto-bg-word">ATLAS</div>
+  <div class="violet-line"></div>
+  <blockquote class="manifesto-quote">
+    "Legacy wealth is a cage. <em>Atlas &amp; Spark is the key.</em>
+    We do not seek to fix what is broken.
+    We architect what is next. <em>One day. Infinite leverage.</em>"
+  </blockquote>
+  <a href="#apply" class="btn-primary">Enter the Collective</a>
+</div>
+
+<hr class="rule">
+
+<!-- ══════════════════════════════════════
+     THE THREE PILLARS
+══════════════════════════════════════ -->
+<section id="pillars" class="section reveal">
+  <p class="section-label">01 — Architecture</p>
+  <h2 class="section-title">THE THREE<br>PILLARS</h2>
+  <div class="pillar-grid">
+    <div class="pillar p1">
+      <div class="pillar-bg-num">I</div>
+      <div class="pillar-role">The Institution · The Root</div>
+      <div class="pillar-name">THE ATLAS<br>FORUM</div>
+      <div class="pillar-desc">Stability. Global Capital. Infrastructure. The immovable foundation from which all sovereign energy radiates. The Great Container.</div>
+      <div class="tag">8 · POWER</div>
+      <div class="pillar-num-label">FOUNDATION</div>
+    </div>
+    <div class="pillar p2">
+      <div class="pillar-bg-num">II</div>
+      <div class="pillar-role">The Collective · The Identity</div>
+      <div class="pillar-name">SOVEREIGN<br>BUILDERS</div>
+      <div class="pillar-desc">The community. The visionary women. The architects of the new world. Independent, sovereign, uncompromising. The Who.</div>
+      <div class="tag">1 · INDEPENDENCE</div>
+      <div class="pillar-num-label">COLLECTIVE</div>
+    </div>
+    <div class="pillar p3">
+      <div class="pillar-bg-num">III</div>
+      <div class="pillar-role">The Activation · The Fruit</div>
+      <div class="pillar-name">SPARK<br>EVENTS</div>
+      <div class="pillar-desc">The Labs. The Rituals. The AI Sprints. The How — the electric moment where individual builders become a sovereign collective.</div>
+      <div class="tag" style="border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7);">2 · PARTNERSHIP</div>
+      <div class="pillar-num-label">ACTIVATION</div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ══════════════════════════════════════
+     SPARK EVENT SERIES
+══════════════════════════════════════ -->
+<section class="section reveal">
+  <p class="section-label">02 — Event Portfolio</p>
+  <h2 class="section-title">THE SPARK<br>SERIES</h2>
+  <div class="grid-2">
+    <div class="event-card">
+      <div class="event-niche">Niche: Tech-Forward Builders</div>
+      <div class="event-name">SPARK:<br>AI LABS</div>
+      <div class="event-focus">Automating sovereignty and multiplying human output. The intersection of artificial intelligence and global influence — engineered for the architect class.</div>
+      <div class="tag">⚡ INITIALIZE</div>
+    </div>
+    <div class="event-card">
+      <div class="event-niche">Niche: High-Net-Worth Investors</div>
+      <div class="event-name">SPARK:<br>CAPITAL VAULT</div>
+      <div class="event-focus">Family office strategies and private asset allocation. Where generational wealth is structured, protected, and deployed with precision.</div>
+      <div class="tag">🏦 ALLOCATE</div>
+    </div>
+    <div class="event-card">
+      <div class="event-niche">Niche: Transformational / Spirit</div>
+      <div class="event-name">SPARK:<br>LUMINOUS RITUAL</div>
+      <div class="event-focus">Sound healing, herbal ritual, and the sacred ceremony of the sovereign self. The full-spectrum restoration of the architect's frequency.</div>
+      <div class="tag">✦ RESTORE</div>
+    </div>
+    <div class="event-card">
+      <div class="event-niche">Niche: Female Founders & Leaders</div>
+      <div class="event-name">SPARK:<br>SOVEREIGN WOMEN</div>
+      <div class="event-focus">Leadership de-centering and high-vibration networking. Where women who build empires find each other and amplify the frequency.</div>
+      <div class="tag">👁 ASCEND</div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ══════════════════════════════════════
+     MEMBERSHIP TIERS
+══════════════════════════════════════ -->
+<div id="membership" class="membership-intro reveal">
+  <p class="section-label" style="justify-content:center;">03 — Membership Architecture</p>
+  <h2 class="section-title" style="text-align:center;margin-bottom:16px;">THE THREE<br>TIERS</h2>
+  <p style="font-family:var(--font-s);font-style:italic;color:var(--silver);font-size:17px;max-width:560px;margin:0 auto;line-height:1.75;">Power is not granted. It is structured. Choose your entry into the sovereign ecosystem.</p>
+</div>
+
+<div class="wrap" style="padding-bottom:80px;">
+  <div class="tier-grid">
+    <!-- CATALYST -->
+    <div class="tier-card t1 reveal">
+      <div class="tier-badge">Entry · The Foundation</div>
+      <div class="tier-price">$297</div>
+      <div class="tier-period">/ month</div>
+      <div class="tier-name">CATALYST<br>TIER</div>
+      <ul class="tier-features">
+        <li>All Spark Events (digital access)</li>
+        <li>Monthly AI Labs Workshop</li>
+        <li>Private community portal</li>
+        <li>Resource vault &amp; playbooks</li>
+        <li>Sovereign Builders podcast feed</li>
+        <li>Monthly capital strategy newsletter</li>
+      </ul>
+      <a href="#apply" class="btn-ghost" style="width:100%;text-align:center;">Apply — Catalyst</a>
+    </div>
+    <!-- SOVEREIGN -->
+    <div class="tier-card t2 reveal">
+      <div class="tier-popular">Most Applied</div>
+      <div class="tier-badge">Core · The Identity</div>
+      <div class="tier-price">$997</div>
+      <div class="tier-period">/ month</div>
+      <div class="tier-name">SOVEREIGN<br>TIER</div>
+      <ul class="tier-features">
+        <li>Everything in Catalyst</li>
+        <li>Live Spark Events — in-person access</li>
+        <li>Quarterly 1:1 sovereign strategy session</li>
+        <li>Capital Vault deal flow access</li>
+        <li>Land deal investment priority</li>
+        <li>Bi-weekly mastermind calls</li>
+        <li>Vetted builder introductions</li>
+      </ul>
+      <a href="#apply" class="btn-primary" style="width:100%;text-align:center;">Apply — Sovereign</a>
+    </div>
+    <!-- APEX -->
+    <div class="tier-card t3 reveal">
+      <div class="tier-badge">Elite · The Apex</div>
+      <div class="tier-price">$4,997</div>
+      <div class="tier-period">/ month</div>
+      <div class="tier-name">APEX<br>ARCHITECT</div>
+      <ul class="tier-features">
+        <li>Everything in Sovereign</li>
+        <li>Co-invest in Atlas land portfolio</li>
+        <li>Private deal structuring support</li>
+        <li>Direct access to founding circle</li>
+        <li>Custom AI automation build-out</li>
+        <li>White-glove event concierge</li>
+        <li>Legacy infrastructure consulting</li>
+      </ul>
+      <a href="#apply" class="btn-primary" style="width:100%;text-align:center;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.25);">Apply — Apex</a>
+    </div>
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- ══════════════════════════════════════
+     LAND PORTFOLIO
+══════════════════════════════════════ -->
+<div id="land" class="land-hero-section reveal">
+  <div class="land-hero-bg-word">SOIL</div>
+  <div style="position:relative;z-index:1;">
+    <p class="section-label">04 — Land Portfolio</p>
+    <h2 class="section-title" style="margin-bottom:16px;">ATLAS<br>LAND</h2>
+    <p style="font-family:var(--font-s);font-style:italic;color:var(--silver);font-size:16px;max-width:580px;line-height:1.75;margin-bottom:0;">
+      "1,000 acres of sovereign soil. The root of your power. Private capital deployed with precision and permanence."
+    </p>
+    <div class="land-stats">
+      <div class="land-stat"><div class="land-stat-num">1,000+</div><div class="land-stat-label">Acres Under Development</div></div>
+      <div class="land-stat"><div class="land-stat-num">3</div><div class="land-stat-label">Active Deal Regions</div></div>
+      <div class="land-stat"><div class="land-stat-num">18%</div><div class="land-stat-label">Projected Annual Return</div></div>
+      <div class="land-stat"><div class="land-stat-num">$50K</div><div class="land-stat-label">Minimum Co-Investment</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding:2px 60px 80px;">
+  <div class="deal-grid">
+    <div class="deal-card reveal">
+      <div class="deal-status">● Active — Raising</div>
+      <div class="deal-name">SAN LUIS<br>VALLEY HOLD</div>
+      <div class="deal-location">Colorado · 320 Acres</div>
+      <div class="deal-rows">
+        <div class="deal-row"><span class="deal-row-lbl">Type</span><span class="deal-row-val">Agri-sovereign land hold</span></div>
+        <div class="deal-row"><span class="deal-row-lbl">Target Raise</span><span class="deal-row-val accent">$2.4M</span></div>
+        <div class="deal-row"><span class="deal-row-lbl">Min. Entry</span><span class="deal-row-val">$50,000</span></div>
+        <div class="deal-row"><span class="deal-row-lbl">Projected IRR</span><span class="deal-row-val accent">16–22%</span></div>
+        <div class="deal-row"><span class="deal-row-lbl">Hold Period</span><span class="deal-row-val">5–7 Years</span></div>
+        <div class="deal-row"><span class="deal-row-lbl">Access</span><span class="deal-row-val">Sovereign+ members</span></div>
+      </div>
+      <a href="#apply" class="btn-primary">Unlock Deal Access</a>
+    </div>
+    <div class="deal-card reveal">
+      <div class="deal-status">● Active — Raising</div>
+      <div class="deal-name">DESERT MONOLITH<br>RANCH</div>
+      <div class="deal-location">New Mexico · 480 Acres</div>
+      <div class="deal-rows">
+        <div class="deal-row"><span class="deal-row-lbl">Type</span><span class="deal-row-val">Retreat &amp; event campus</span></div>
+        <div class="deal-row"><span class="deal-row-lbl">Target Raise</span><span class="deal-row-val accent">$3.8M</span></div>
+        <div class="deal-row"><span class="deal-row-lbl">Min. Entry</span><span class="deal-row-val">$100,000</span></div>
+        <div class="deal-row"><span class="deal-row-lbl">Projected IRR</span><span class="deal-row-val accent">18–25%</span></div>
+        <div class="deal-row"><span class="deal-row-lbl">Hold Period</span><span class="deal-row-val">3–5 Years</span></div>
+        <div class="deal-row"><span class="deal-row-lbl">Access</span><span class="deal-row-val">Apex members only</span></div>
+      </div>
+      <a href="#apply" class="btn-primary">Unlock Deal Access</a>
+    </div>
+    <div class="deal-card reveal">
+      <div class="deal-status soon">◌ Coming — Q3 2025</div>
+      <div class="deal-name">CRYSTALLINE<br>MESA PROJECT</div>
+      <div class="deal-location">Arizona · 260 Acres</div>
+      <div class="deal-rows">
+        <div class="deal-row"><span class="deal-row-lbl">Type</span><span class="deal-row-val">Wellness + sovereign campus</span></div>
+        <div class="deal-row"><span class="deal-row-lbl">Target Raise</span><span class="deal-row-val accent">$1.9M</span></div>
+        <div class="deal-row"><span class="deal-row-lbl">Min. Entry</span><span class="deal-row-val">$50,000</span></div>
+        <div class="deal-row"><span class="deal-row-lbl">Projected IRR</span><span class="deal-row-val accent">14–18%</span></div>
+        <div class="deal-row"><span class="deal-row-lbl">Hold Period</span><span class="deal-row-val">4–6 Years</span></div>
+        <div class="deal-row"><span class="deal-row-lbl">Access</span><span class="deal-row-val">Priority list open</span></div>
+      </div>
+      <a href="#apply" class="btn-ghost">Join Priority List</a>
+    </div>
+    <div class="deal-card reveal" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 40px;">
+      <div style="font-family:var(--font-d);font-size:100px;line-height:1;color:rgba(99,0,255,.12);margin-bottom:20px;">+</div>
+      <div style="font-family:var(--font-d);font-size:26px;letter-spacing:.1em;margin-bottom:14px;">MORE DEALS<br>IN PIPELINE</div>
+      <div style="font-family:var(--font-s);font-style:italic;color:var(--charcoal);font-size:14px;line-height:1.7;margin-bottom:28px;">Apex Architect members receive deal flow access 30 days before any public offering.</div>
+      <a href="#apply" class="btn-primary">Join Apex Tier</a>
+    </div>
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- ══════════════════════════════════════
+     SALES FUNNEL
+══════════════════════════════════════ -->
+<section class="funnel-section reveal">
+  <p class="section-label">05 — Conversion Architecture</p>
+  <h2 class="section-title">THE SALES<br>FUNNEL</h2>
+  <p style="font-family:var(--font-s);font-style:italic;color:var(--silver);font-size:16px;max-width:580px;line-height:1.75;margin-bottom:48px;">
+    Seven stages. Each one sovereign. Each designed to filter for the builder who is ready.
+  </p>
+  <div class="funnel-stages">
+    <div class="funnel-stage">
+      <div class="funnel-stage-num">01</div>
+      <div>
+        <div class="funnel-stage-step">Awareness</div>
+        <div class="funnel-stage-title">THE SPARK HOOK</div>
+        <div class="funnel-stage-desc">Paid social (Instagram Reels, YouTube pre-roll) and organic content amplifying the brand manifesto. Lead magnet: "The Sovereign Builder Blueprint" — a free download that delivers immediate value and filters for serious builders.</div>
+        <div class="funnel-stage-meta">Channels: Instagram · YouTube · LinkedIn · Podcast</div>
+      </div>
+    </div>
+    <div class="funnel-connector"></div>
+    <div class="funnel-stage">
+      <div class="funnel-stage-num">02</div>
+      <div>
+        <div class="funnel-stage-step">Capture</div>
+        <div class="funnel-stage-title">THE LANDING PAGE</div>
+        <div class="funnel-stage-desc">Email opt-in for free webinar registration. Minimal form: Name + Email + Niche. Urgency mechanism: "Seats are sovereign and scarce — 47 remaining." Obsidian/violet design that signals premium before a word is read.</div>
+        <div class="funnel-stage-meta">Conversion target: 35%+ opt-in rate</div>
+      </div>
+    </div>
+    <div class="funnel-connector"></div>
+    <div class="funnel-stage">
+      <div class="funnel-stage-num">03</div>
+      <div>
+        <div class="funnel-stage-step">Warm</div>
+        <div class="funnel-stage-title">THE EMAIL SEQUENCE</div>
+        <div class="funnel-stage-desc">5-email pre-webinar sequence. Email 1: Manifesto + origin story. Email 2: Social proof — member results. Email 3: The land opportunity teaser. Email 4: AI leverage case study. Email 5: Final urgency + reminder. Tone: declarative, authoritative, zero hype.</div>
+        <div class="funnel-stage-meta">Sequence: 5 emails · 7-day window</div>
+      </div>
+    </div>
+    <div class="funnel-connector"></div>
+    <div class="funnel-stage">
+      <div class="funnel-stage-num">04</div>
+      <div>
+        <div class="funnel-stage-step">Convert</div>
+        <div class="funnel-stage-title">THE LIVE WEBINAR</div>
+        <div class="funnel-stage-desc">90-minute live event. Act 1 (20 min): The Problem — legacy systems are fracturing. Act 2 (40 min): The Solution — Atlas infrastructure + Spark AI leverage. Act 3 (30 min): The Offer — Catalyst tier revealed with founding member rate. Live Q&amp;A closes with apply CTA.</div>
+        <div class="funnel-stage-meta">Pitch window: Final 20 minutes · Replay 48 hours</div>
+      </div>
+    </div>
+    <div class="funnel-connector"></div>
+    <div class="funnel-stage">
+      <div class="funnel-stage-num">05</div>
+      <div>
+        <div class="funnel-stage-step">Upsell</div>
+        <div class="funnel-stage-title">THE LAND BRIDGE</div>
+        <div class="funnel-stage-desc">Post-webinar: members who apply within 48 hours receive exclusive access to the Atlas Land Deal deck. This bridges the membership sale with the land investment offer — two revenue streams, one funnel. Sovereign tier+ unlocks deal co-investment.</div>
+        <div class="funnel-stage-meta">Revenue bridge: Membership → Land investment</div>
+      </div>
+    </div>
+    <div class="funnel-connector"></div>
+    <div class="funnel-stage">
+      <div class="funnel-stage-num">06</div>
+      <div>
+        <div class="funnel-stage-step">Retain</div>
+        <div class="funnel-stage-title">THE ONBOARDING RITUAL</div>
+        <div class="funnel-stage-desc">Welcome sequence: personalized video from founder. Access to the member portal. Calendar invite for first Spark event. Monthly Sovereign Frequency newsletter. Community integration via private workspace. The collective becomes the product.</div>
+        <div class="funnel-stage-meta">Churn target: &lt;5% monthly</div>
+      </div>
+    </div>
+    <div class="funnel-connector"></div>
+    <div class="funnel-stage">
+      <div class="funnel-stage-num">07</div>
+      <div>
+        <div class="funnel-stage-step">Amplify</div>
+        <div class="funnel-stage-title">THE REFERRAL ENGINE</div>
+        <div class="funnel-stage-desc">Sovereign members who refer a founding member receive one complimentary Spark event seat. Apex members receive a credit toward land deal allocation. The collective grows itself. Power begets power.</div>
+        <div class="funnel-stage-meta">Mechanism: Credit-based referral program</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ══════════════════════════════════════
+     WEBINAR & PODCAST
+══════════════════════════════════════ -->
+<section id="webinar" class="section reveal">
+  <p class="section-label">06 — Media &amp; Broadcast</p>
+  <h2 class="section-title">WEBINAR &amp;<br>PODCAST</h2>
+  <div class="media-grid">
+    <!-- WEBINAR -->
+    <div class="media-card webinar">
+      <div class="media-eyebrow">Live Webinar Series</div>
+      <div class="media-title">SPARK:<br>SOVEREIGN<br>SUMMIT</div>
+      <div class="media-desc">"AI Leverage &amp; Sovereign Wealth — One Day. Infinite Leverage." The flagship conversion webinar. Live monthly. Seats are sovereign and scarce.</div>
+      <div class="webinar-steps">
+        <div class="webinar-step">
+          <div class="ws-icon">📣</div>
+          <div class="ws-text"><strong>Pre-Registration</strong><span>Countdown timer · scarcity seats · email capture</span></div>
+        </div>
+        <div class="webinar-step">
+          <div class="ws-icon">📧</div>
+          <div class="ws-text"><strong>5-Email Warm Sequence</strong><span>Manifesto → proof → land tease → case study → urgency</span></div>
+        </div>
+        <div class="webinar-step">
+          <div class="ws-icon">🎙</div>
+          <div class="ws-text"><strong>Live 90-Minute Event</strong><span>Problem → Solution → Offer → Q&amp;A close</span></div>
+        </div>
+        <div class="webinar-step">
+          <div class="ws-icon">⚡</div>
+          <div class="ws-text"><strong>48-Hour Replay + Offer Window</strong><span>Founding member rate · land deal deck unlocked</span></div>
+        </div>
+        <div class="webinar-step">
+          <div class="ws-icon">🏦</div>
+          <div class="ws-text"><strong>Post-Webinar Land Upsell</strong><span>Deal deck delivered to applicants only</span></div>
+        </div>
+      </div>
+      <a href="#apply" class="btn-primary">Register for Next Session</a>
+    </div>
+    <!-- PODCAST -->
+    <div class="media-card podcast">
+      <div class="media-eyebrow">Sovereign Frequency Podcast</div>
+      <div class="media-title">THE<br>FREQUENCY<br>CAST</div>
+      <div class="media-desc">Conversations at the intersection of capital, AI, and personal sovereignty. Weekly drops. Every episode ends with a Spark CTA.</div>
+      <div class="ep-list">
+        <div class="ep-item">
+          <div class="ep-num">01</div>
+          <div class="play-btn"><div class="play-tri"></div></div>
+          <div class="ep-title">Legacy Is a Cage. Here Is the Key.</div>
+          <div class="ep-dur">42 MIN</div>
+        </div>
+        <div class="ep-item">
+          <div class="ep-num">02</div>
+          <div class="play-btn"><div class="play-tri"></div></div>
+          <div class="ep-title">AI as Sovereign Infrastructure</div>
+          <div class="ep-dur">55 MIN</div>
+        </div>
+        <div class="ep-item">
+          <div class="ep-num">03</div>
+          <div class="play-btn"><div class="play-tri"></div></div>
+          <div class="ep-title">The 1,000-Acre Blueprint</div>
+          <div class="ep-dur">38 MIN</div>
+        </div>
+        <div class="ep-item">
+          <div class="ep-num">04</div>
+          <div class="play-btn"><div class="play-tri"></div></div>
+          <div class="ep-title">Capital Vaults &amp; Private Allocation</div>
+          <div class="ep-dur">61 MIN</div>
+        </div>
+        <div class="ep-item">
+          <div class="ep-num">05</div>
+          <div class="play-btn"><div class="play-tri"></div></div>
+          <div class="ep-title">Ritual as Business Architecture</div>
+          <div class="ep-dur">44 MIN</div>
+        </div>
+        <div class="ep-item">
+          <div class="ep-num">06</div>
+          <div class="play-btn"><div class="play-tri"></div></div>
+          <div class="ep-title">The Sovereign Women Roundtable</div>
+          <div class="ep-dur">78 MIN</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ══════════════════════════════════════
+     APPLICATION FORM
+══════════════════════════════════════ -->
+<section id="apply" class="signup-section">
+  <div class="signup-bg">APPLY</div>
+  <div class="signup-inner">
+    <p class="section-label">07 — The Application</p>
+    <h2 class="section-title" style="margin-bottom:16px;">JOIN THE<br>COLLECTIVE</h2>
+    <p style="font-family:var(--font-s);font-style:italic;color:var(--silver);font-size:16px;line-height:1.75;margin-bottom:44px;">
+      The Sovereign Builders Collective is selective by design. Power is not for everyone. Apply below.
+    </p>
+    <div id="the-form">
+      <div class="form-grid">
+        <div class="field">
+          <label>First Name</label>
+          <input type="text" id="f-first" placeholder="First name">
+        </div>
+        <div class="field">
+          <label>Last Name</label>
+          <input type="text" placeholder="Last name">
+        </div>
+        <div class="field form-full">
+          <label>Email Address</label>
+          <input type="email" id="f-email" placeholder="you@domain.com">
+        </div>
+        <div class="field">
+          <label>Industry / Niche</label>
+          <input type="text" placeholder="e.g. Real estate, fintech, wellness">
+        </div>
+        <div class="field">
+          <label>Membership Tier</label>
+          <select>
+            <option value="">Select your tier</option>
+            <option>Catalyst — $297/mo</option>
+            <option>Sovereign — $997/mo</option>
+            <option>Apex Architect — $4,997/mo</option>
+          </select>
+        </div>
+        <div class="field form-full">
+          <label>Interested in Land Co-Investment?</label>
+          <select>
+            <option value="">Select</option>
+            <option>Yes — $50K–$100K range</option>
+            <option>Yes — $100K+ range</option>
+            <option>Not at this time</option>
+          </select>
+        </div>
+        <div class="field form-full">
+          <label>Why do you belong in this collective?</label>
+          <textarea placeholder="Your sovereign intent — speak plainly."></textarea>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="submitForm()" style="margin-top:8px;">Submit Application</button>
+    </div>
+    <div class="form-success" id="form-success">
+      <h3>APPLICATION RECEIVED.</h3>
+      <p>The Sovereign Builders Collective will contact you within 48 hours to schedule your onboarding call.<br><br>
+      <span style="color:var(--violet);font-size:10px;letter-spacing:.38em;text-transform:uppercase;">Radiating Global Sovereignty.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div>
+    <div class="footer-brand">THE ATLAS FORUM</div>
+    <div class="footer-tagline">Sovereign Builders Collective · Spark Event Series</div>
+  </div>
+  <div class="footer-links">
+    <a href="#pillars">The Vision</a>
+    <a href="#membership">Membership</a>
+    <a href="#land">Land Portfolio</a>
+    <a href="#webinar">Webinar</a>
+    <a href="#apply">Apply</a>
+    <div class="footer-seal">Radiating Global Sovereignty.</div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════ -->
+<script>
+/* ── SCROLL REVEAL ── */
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(r => observer.observe(r));
+
+/* ── ACTIVE NAV ── */
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current
+      ? 'var(--violet)' : '';
+  });
+});
+
+/* ── FORM SUBMIT ── */
+function submitForm() {
+  const name  = document.getElementById('f-first').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  if (!name || !email) {
+    alert('Please fill in your name and email to apply.');
+    return;
+  }
+  document.getElementById('the-form').style.display = 'none';
+  document.getElementById('form-success').classList.add('show');
+}
+
+/* ── SMOOTH NAV SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
